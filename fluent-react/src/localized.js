@@ -1,6 +1,5 @@
 import { isValidElement, cloneElement, Component, Children } from "react";
 import PropTypes from "prop-types";
-
 import { isReactLocalization } from "./localization";
 import { parseMarkup } from "./markup";
 import VOID_ELEMENTS from "../vendor/voidElementTags";
@@ -85,6 +84,8 @@ export default class Localized extends Component {
     const elem = typeof(children) !== "undefined" ?
       Children.only(children) : null;
 
+    const markupParser = this.context.parseMarkup || parseMarkup;
+
     if (!l10n) {
       // Use the wrapped component as fallback.
       return elem;
@@ -144,7 +145,7 @@ export default class Localized extends Component {
 
     // If the message contains markup, parse it and try to match the children
     // found in the translation with the props passed to this Localized.
-    const translationNodes = Array.from(parseMarkup(messageValue).childNodes);
+    const translationNodes = Array.from(markupParser(messageValue).childNodes);
     const translatedChildren = translationNodes.map(childNode => {
       if (childNode.nodeType === childNode.TEXT_NODE) {
         return childNode.textContent;
@@ -177,7 +178,8 @@ export default class Localized extends Component {
 }
 
 Localized.contextTypes = {
-  l10n: isReactLocalization
+  l10n: isReactLocalization,
+  parseMarkup: PropTypes.func
 };
 
 Localized.propTypes = {
