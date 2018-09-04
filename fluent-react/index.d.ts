@@ -83,7 +83,7 @@ export declare interface LocalizedComponentProps {
     children?: React.ReactNode;
 }
 
-export declare class Localized extends React.Component<LocalizedComponentProps> {
+export declare class Localized extends React.Component<any> {
     public componentDidMount(): void;
     public componentWillUnmount(): void;
 

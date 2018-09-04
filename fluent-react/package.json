@@ -1,7 +1,7 @@
 {
   "name": "fluent-react",
   "description": "Fluent bindings for React",
-  "version": "0.8.3-vendeq",
+  "version": "0.8.5-vendeq",
   "homepage": "http://projectfluent.org",
   "author": "Mozilla <l10n-drivers@mozilla.org>",
   "license": "Apache-2.0",
@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "cached-iterable": "^0.2.1",
-    "fluent": "^0.4.0 || ^0.6.0 || ^0.7.0 || ^0.8.1-vendeq",
+    "fluent": "^0.4.0 || ^0.6.0 || ^0.7.0 || ^0.8.2-vendeq",
     "fluent-sequence": "^0.2.0",
     "prop-types": "^15.6.0"
   },
