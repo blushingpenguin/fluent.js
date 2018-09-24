@@ -23,3 +23,5 @@ export { default as Localized } from "./localized";
 export { default as ReactLocalization, isReactLocalization }
   from "./localization";
 export { default as createParseMarkup } from "./markup";
+export { default as omittedCloseTags } from "../vendor/omittedCloseTags";
+export { default as voidElementTags } from "../vendor/voidElementTags";

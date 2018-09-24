@@ -101,3 +101,7 @@ export declare class Localized extends React.Component<any> {
 }
 
 export function createParseMarkup(): (str: string) => Array<Node & ChildNode>;
+
+export type TagMap = { [id: string]: boolean };
+export const omittedCloseTags : TagMap;
+export const voidElementTags : TagMap;
