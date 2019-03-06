@@ -1,8 +1,7 @@
 export class ParserStream {
   constructor(string) {
-    this.string = string.indexOf("\r") !== -1 ?
-      string.replace(/(?:\r\n)/g, "\n") : string;
-    this.iter = this.string[Symbol.iterator]();
+    this.string = string;
+    this.iter = string[Symbol.iterator]();
     this.buf = [];
     this.peekIndex = 0;
     this.index = 0;
