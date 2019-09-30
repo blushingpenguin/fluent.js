@@ -1,5 +1,15 @@
 import * as React from 'react';
 
+export class FluentType {
+  constructor(value: any, opts: object);
+  toString(bundle: FluentBundle): string;
+  valueOf(): any;
+}
+
+export class FluentNone extends FluentType { }
+export class FluentNumber extends FluentType { }
+export class FluentDateTime extends FluentType { }
+
 /**
  * Fluent Resource is a structure storing a map
  * of localization entries.
