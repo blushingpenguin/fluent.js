@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@fluent/dedent": "^0.1.0",
+    "intl-pluralrules": "^1.0.3",
     "sinon": "^4.2.2"
   }
 }

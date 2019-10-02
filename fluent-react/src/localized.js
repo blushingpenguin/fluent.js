@@ -138,10 +138,6 @@ export default class Localized extends Component {
       }
     }
 
-    if (!elem) {
-      return messageValue;
-    }
-
     // If the wrapped component is a known void element, explicitly dismiss the
     // message value and do not pass it to cloneElement in order to avoid the
     // "void element tags must neither have `children` nor use
