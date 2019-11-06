@@ -8,6 +8,11 @@ function TestComponent() {
   return getString("test");
 }
 
+function TestComponentWithFallback() {
+  const getString = useLocalization();
+  return getString("not_found_test", undefined, "fallback");
+}
+
 describe("useLocalization", () => {
   const testBundle = new FluentBundle("en-US", { useIsolating: false });
   testBundle.addResource(new FluentResource("test = translated test string"));
@@ -24,6 +29,22 @@ describe("useLocalization", () => {
   test("render outside of a LocalizationProvider", () => {
     const renderer = TestRenderer.create(<TestComponent />);
     expect(renderer.toJSON()).toMatchInlineSnapshot(`"test"`);
+  });
+
+  test("render inside of a LocalizationProvider with fallback", () => {
+    const renderer = TestRenderer.create(
+      <LocalizationProvider bundles={[testBundle]}>
+        <TestComponentWithFallback />
+      </LocalizationProvider>
+    );
+    expect(renderer.toJSON()).toMatchInlineSnapshot(`"fallback"`);
+  });
+
+  test("render outside of a LocalizationProvider with fallback", () => {
+    const renderer = TestRenderer.create(
+      <TestComponentWithFallback />
+    );
+    expect(renderer.toJSON()).toMatchInlineSnapshot(`"fallback"`);
   });
 
   test("render with context changes", () => {

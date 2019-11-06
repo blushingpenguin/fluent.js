@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import FluentContext from "./context";
 
-function dummyGetString(str) {
-  return str;
+function dummyGetString(id, args, fallback) {
+  return fallback || id;
 }
 
 /**
