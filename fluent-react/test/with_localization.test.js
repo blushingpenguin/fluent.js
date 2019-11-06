@@ -3,8 +3,14 @@ import TestRenderer from "react-test-renderer";
 import { FluentBundle, FluentResource } from "../../fluent-bundle/src";
 import { LocalizationProvider, withLocalization } from "../src";
 
-function DummyComponent() {
-  return <div />;
+class DummyComponent extends React.Component {
+  static doStaticThing() {
+    return "done";
+  }
+
+  render() {
+    return <div />;
+  }
 }
 
 describe("withLocalization", () => {
@@ -125,4 +131,10 @@ bar = BAR {$arg}
 
     expect(renderer.toJSON()).toMatchInlineSnapshot(`"BAR"`);
   });
+
+  test('static function is hoisted onto the wrapped component', function() {
+    const EnhancedComponent = withLocalization(DummyComponent);
+    const result = EnhancedComponent.doStaticThing();
+    expect(result).toEqual("done");
+  })
 });

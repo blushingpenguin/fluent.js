@@ -1,6 +1,8 @@
 import { createElement, useContext } from "react";
 import FluentContext from "./context";
 
+import hoistNonReactStatics from "hoist-non-react-statics";
+
 export default function withLocalization(Inner) {
   function WithDisplay(props) {
     const { l10n } = useContext(FluentContext);
@@ -20,7 +22,7 @@ export default function withLocalization(Inner) {
 
   WithDisplay.displayName = `WithLocalization(${displayName(Inner)})`;
 
-  return WithDisplay;
+  return hoistNonReactStatics(WithDisplay, Inner);
 }
 
 function displayName(component) {
