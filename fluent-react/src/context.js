@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export default createContext({getBundle: null, parseMarkup: null});
+export default createContext({l10n: null, parseMarkup: null});
